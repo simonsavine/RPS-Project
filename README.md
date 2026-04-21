@@ -2,7 +2,7 @@
 
 ! WORK IN PROGRESS: BUTTONS AND MORE TO COME !
 
-As a way of getting myself used to Pygame again, I decided to visualise the classic game of Rock, Paper, Scissors.
+As a way of getting myself used to Pygame again, I decided to visualise the classic game of Rock, Paper, Scissors and use my own hands as sprites :)
 
 Starting positions in terminal:
 <img width="974" height="582" alt="RPS Preview Github 1" src="https://github.com/user-attachments/assets/3352dc95-d16b-4765-adad-a7d38138706a" />
