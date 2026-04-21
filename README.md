@@ -1,4 +1,6 @@
 # RPS-Project
+
+! WORK IN PROGRESS !
 Using Pygame to make a visual Rock, Paper, Scissors game.
 
 As a way of getting myself used to Pygame again, I decided to visualise the classic game of Rock, Paper, Scissors.
