@@ -1,6 +1,6 @@
 # RPS-Project
 
-! WORK IN PROGRESS BUTTONS AND MORE TO COME !
+! WORK IN PROGRESS: BUTTONS AND MORE TO COME !
 
 As a way of getting myself used to Pygame again, I decided to visualise the classic game of Rock, Paper, Scissors.
 
