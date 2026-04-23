@@ -1,4 +1,5 @@
 from RPSCode import RPS
+from Button import Button
 
 import pygame
 
@@ -40,7 +41,6 @@ delta_time = 0.1
 rps = RPS()
 player_ans = rps.player_input
 computer_ans = rps.computer_choice
-
 
 def playerChoiceAnimation():
     # Blit Player choice!
