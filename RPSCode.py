@@ -32,7 +32,7 @@ class RPS:
   def playerChoice(self):
     return self.player_input
 
-  def computerChoice(self):
+  def computerChoice(self):=
     return self.computer_choice
 
   def mapping(self):
