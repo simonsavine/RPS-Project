@@ -1,6 +1,7 @@
 from RPSCode import RPS
 from textbox import TextBox
 import pygame
+import pygame_gui
 
 pygame.init()
 
@@ -33,6 +34,8 @@ scissors_flipped = pygame.transform.flip(ss, True, False)
 
 
 clock = pygame.time.Clock()
+MANAGER = pygame_gui.UIManager((WIDTH, HEIGHT))
+
 delta_time = 0.1
 
 # Make the hands move 3 times in animation
