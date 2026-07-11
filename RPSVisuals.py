@@ -1,18 +1,19 @@
 from RPSCode import RPS
-from Button import Button
-
+from textbox import TextBox
 import pygame
 
 pygame.init()
 
-# Change resolution to fit your monitor!
-screen = pygame.display.set_mode((1100,850))
+# Change resolution to fit your monitor resolution.
+WIDTH, HEIGHT = 1600, 900
+screen = pygame.display.set_mode((WIDTH,HEIGHT))
+
 pygame.display.set_caption("Rock Paper Scissors")
 
-paper_img = pygame.image.load('Paper.png')
-rock_img = pygame.image.load('Rock.png')
-scissors_img = pygame.image.load('Scissors.png')
-start1_img = pygame.image.load('Start1.png')
+paper_img = pygame.image.load('images/Paper.png')
+rock_img = pygame.image.load('images/Rock.png')
+scissors_img = pygame.image.load('images/Scissors.png')
+start1_img = pygame.image.load('images/Start1.png')
 
 # Re-size images as you please:
 sp = pygame.transform.scale(paper_img, (300,300))
@@ -80,39 +81,46 @@ def computerChoiceAnimation():
 def startAnimation():
     
     for i in range(3):
-        screen.fill((0,0,0))
+        screen.fill("white")
         screen.blit(ss1, (660, 250))
         screen.blit(ss1_flipped, (140, 250))
 
         pygame.display.flip()
         pygame.time.delay(300)
 
-        screen.fill((0,0,0))
+        screen.fill("white")
         screen.blit(ss1_rot, (660, 250))
 
-        # Problem here
         screen.blit(ss1_rot_flipped, (140, 250))
 
         pygame.display.flip()
         pygame.time.delay(300)
     
-    screen.fill((0,0,0))
+    screen.fill("white")
     playerChoiceAnimation()
     computerChoiceAnimation()
-    
+
+def waitForInput():
+     running = True
+
+     while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+                    exit()
+
 running = True
 while running:
 
     startAnimation()
 
-    # Input animation def here, make the hands move 3 times
+    waitForInput()
+    
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    pygame.display.flip()
-
-pygame.quit()
-print("Hello!!")
+    # Let the player have a good look at the outcome
+    # Only exit when player is ready and presses ESC
 
