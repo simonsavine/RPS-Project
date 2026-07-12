@@ -1,11 +1,18 @@
 import random
+import pygame
+import pygame_gui
+
+pygame.init()
 
 class RPS:
+
+  def player_input():
+    pass
 
   def __init__(self):
     choices = {'rock': 1, 'paper': 2, 'scissors': 3}
     self.choices = choices
-    player_input = str.lower(input("Player, input your choice: "))
+    player_input = player_input()
     self.player_input = player_input
 
     outcomes = {
