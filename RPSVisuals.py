@@ -1,5 +1,6 @@
 from RPSCode import RPS
 import pygame
+import sys
 import pygame_gui
 
 pygame.init()
