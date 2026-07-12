@@ -1,12 +1,11 @@
 from RPSCode import RPS
-from textbox import TextBox
 import pygame
 import pygame_gui
 
 pygame.init()
 
 # Change resolution to fit your monitor resolution.
-WIDTH, HEIGHT = 1600, 900
+WIDTH, HEIGHT = 1400, 800
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
 pygame.display.set_caption("Rock Paper Scissors")
@@ -17,10 +16,12 @@ scissors_img = pygame.image.load('images/Scissors.png')
 start1_img = pygame.image.load('images/Start1.png')
 
 # Re-size images as you please:
-sp = pygame.transform.scale(paper_img, (300,300))
-sr = pygame.transform.scale(rock_img, (300,300))
-ss = pygame.transform.scale(scissors_img, (300,300))
-ss1 = pygame.transform.scale(start1_img, (300,300))
+SPRITE_WIDTH, SPRITE_HEIGHT = 300, 300
+
+sp = pygame.transform.scale(paper_img, (SPRITE_WIDTH,SPRITE_HEIGHT))
+sr = pygame.transform.scale(rock_img, (SPRITE_WIDTH,SPRITE_HEIGHT))
+ss = pygame.transform.scale(scissors_img, (SPRITE_WIDTH,SPRITE_HEIGHT))
+ss1 = pygame.transform.scale(start1_img, (SPRITE_WIDTH,SPRITE_HEIGHT))
 
 # Rotated images:
 ss1_rot = pygame.transform.rotate(ss1, 35)
@@ -46,38 +47,45 @@ rps = RPS()
 player_ans = rps.player_input
 computer_ans = rps.computer_choice
 
+
+PLAYER_HORIZONTAL, PLAYER_VERTICAL = WIDTH / 6, HEIGHT / 3
+COMPUTER_HORIZONTAL, COMPUTER_VERTICAL = WIDTH - WIDTH / 6 - SPRITE_WIDTH, HEIGHT / 3
+
 def playerChoiceAnimation():
     # Blit Player choice!
+
         if player_ans == 'rock':
-            screen.blit(rock_flipped, (140, 250))
+            screen.blit(rock_flipped, (PLAYER_HORIZONTAL, PLAYER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
         elif player_ans == 'paper':
-            screen.blit(paper_flipped, (140, 250))
+            screen.blit(paper_flipped, (PLAYER_HORIZONTAL, PLAYER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
         else:
-            screen.blit(scissors_flipped, (140, 250))
+            screen.blit(scissors_flipped, (PLAYER_HORIZONTAL, PLAYER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
 def computerChoiceAnimation():
     # Blit Computer choice!
 
+        # The screen blit shouldn't be fixed to (660, 250)!!
+
         if computer_ans == 'rock':
-            screen.blit(sr, (660, 250))
+            screen.blit(sr, (COMPUTER_HORIZONTAL, COMPUTER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
         elif computer_ans == 'paper':
-            screen.blit(sp, (660, 250))
+            screen.blit(sp, (COMPUTER_HORIZONTAL, COMPUTER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
         else:
-            screen.blit(ss, (660, 250))
+            screen.blit(ss, (COMPUTER_HORIZONTAL, COMPUTER_VERTICAL))
             pygame.display.flip()
             pygame.time.delay(300)
 
@@ -85,16 +93,16 @@ def startAnimation():
     
     for i in range(3):
         screen.fill("white")
-        screen.blit(ss1, (660, 250))
-        screen.blit(ss1_flipped, (140, 250))
+        screen.blit(ss1, (COMPUTER_HORIZONTAL, COMPUTER_VERTICAL))
+        screen.blit(ss1_flipped, (PLAYER_HORIZONTAL, PLAYER_VERTICAL))
 
         pygame.display.flip()
         pygame.time.delay(300)
 
         screen.fill("white")
-        screen.blit(ss1_rot, (660, 250))
+        screen.blit(ss1_rot, (COMPUTER_HORIZONTAL, COMPUTER_VERTICAL))
 
-        screen.blit(ss1_rot_flipped, (140, 250))
+        screen.blit(ss1_rot_flipped, (PLAYER_HORIZONTAL, PLAYER_VERTICAL))
 
         pygame.display.flip()
         pygame.time.delay(300)
