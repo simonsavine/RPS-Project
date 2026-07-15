@@ -16,7 +16,9 @@ TEXT_INPUT = pygame_gui.elements.UITextEntryLine(
     relative_rect=pygame.Rect((WIDTH / 2 - 250, HEIGHT / 2 - 30), (500, 60)),
     manager=MANAGER,
     object_id="#main_text_entry"
-)                 
+)            
+
+font = pygame.font.SysFont('freesans', 75)
 
 class RPS:
   
@@ -115,18 +117,32 @@ class RPS:
   def draw(self):
     # Case of a draw
       if self.player_input_num == self.computer_choice_num:
-        print("It's a draw!")
-        return
+        text_surface = font.render(f"It's a draw!", True, (80, 80, 80))
+        text_rect = text_surface.get_rect(center = (WIDTH / 2, HEIGHT/1.2))
+        SCREEN.blit(text_surface, text_rect)
+        pygame.display.update()
+        return True
+      return False
 
   def player_win(self):
     # Player wins!
-    if self.outcomes[self.player_input_num, self.computer_choice_num] == 1:
-      print(self.player_input, "beats", self.computer_choice, "and Player wins!")
+      if self.outcomes[self.player_input_num, self.computer_choice_num] == 1:
+        text_surface = font.render(f"{self.player_input.title()} beats {self.computer_choice.title()}, Player wins!", True, (20, 130, 60))
+        text_rect = text_surface.get_rect(center = (WIDTH / 2, HEIGHT/1.2))
+        SCREEN.blit(text_surface, text_rect)
+        pygame.display.update()
+        return True
+      return False
 
   def computer_win(self):
     # Computer wins!
-    if self.outcomes[self.player_input_num, self.computer_choice_num] == 2:
-      print(self.computer_choice, "beats", self.player_input, "and Computer wins!")
+      if self.outcomes[self.player_input_num, self.computer_choice_num] == 2:
+        text_surface = font.render(f"{self.computer_choice.title()} beats {self.player_input.title()}, Computer wins!", True, (180, 40, 40))
+        text_rect = text_surface.get_rect(center = (WIDTH / 2, HEIGHT/1.2))
+        SCREEN.blit(text_surface, text_rect)
+        pygame.display.update()
+        return True
+      return False
 
 
 pygame.display.set_caption("Rock Paper Scissors")
@@ -252,6 +268,10 @@ while running:
 
     SCREEN.fill("white")
     startAnimation()
+
+    if not rps.draw():
+        if not rps.player_win():
+          rps.computer_win()
 
     pygame.time.delay(2000)
     
