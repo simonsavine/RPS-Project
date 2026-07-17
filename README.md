@@ -1,4 +1,4 @@
-# RPS-Project
+# RPS Project
 
 As a way of getting myself used to Pygame again, I decided to visualise the classic game of Rock, Paper, Scissors and use my own hands as sprites :)
 
